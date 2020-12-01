@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- jQuery Script -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Bootstrap Scripts -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+
+
+  <!-- Font Awesome Scripts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <title>PokéPad</title>
+</head>
+
+<body>
+
+  <audio id='power-on-audio' src="sounds/power-on.mp3"></audio>
+  <audio id='search-audio' src="sounds/search.mp3"></audio>
+  <audio id='error-audio' src="sounds/error.mp3"></audio>
+
+<!-- ??? -->
+  <!-- <video autoplay muted loop id="background-video">
+  <source src="" type="video/mp4">
+</video> -->
+
+  <div class="site-overlay-dark"></div>
+  <div class="page-container">
+
+    <div class="pokedex-container">
+
+
+      <!-- Lights Section -->
+      <div class="upper-container">
+        <div class="pokedex-lights">
+          <div class="blue-light"></div>
+          <div class="red-light sm-light"></div>
+          <div class="yellow-light sm-light"></div>
+          <div class="green-light sm-light"></div>
+        </div>
+        <div class="search-container">
+          <input id="user-search" type="text" class="search-bar" autocomplete="off" name="search">
+          <button id="search-button" type="submit"><img class="pokeball-search" src="images/pokeball.png" alt=""></button>
+          <!-- <i class="fa fa-search"></i> -->
+        </div>
+      </div>
+
+      <!-- Screen Section -->
+      <div class="pokedex-screen-container">
+        <div class="white-screen-border">
+
+
+          <!-- Start of Main Screen -->
+          <div class="main-screen">
+
+            <div class="shine hide"></div> <!-- Shine effect-->
+            <div class="shine-welcome-screen hide"></div> <!-- Shine effect-->
+            <div class="welcome-screen hide">
+              <h1 class="w-h1">PokéPad</h1>
+              <h3 class="w-h3">Welcome!</h3>
+              <p class="w-p">To get started, search for a Pokémon by name or ID.</p>
+            </div>
+            <div class="error-screen hide">
+              <h1 class="e-h1">Oops!</h1>
+              <h3 class="e-h3">The Pokémon was not found!</h3>
+              <p class="e-p">Please modify your search and try again.</p>
+            </div>
+            <!-- Pokemon page content -->
+            <div class="screen-color hide">
+              <div class="screen-header">
+                <span class="poke-id header-content"></span>
+                <span class="poke-name header-content"></span>
+              </div>
+              <div class="size-container">
+                <div class="size-height">Height: <span class="poke-height"></span></div>
+                <span> &nbsp;-</span>
+                <div class="size-weight">Weight: <span class="poke-weight"></span></div>
+              </div>
+              <div class="screen-images">
+
+                <button class="poke-shiny" type="button" name="button">
+                  <p>Shiny</p><img src="images/shiny2.png" class="shiny-image" alt="">
+                </button>
+
+                <div class="image-shadow"></div>
+                <img src="" class="poke-image" alt="front">
+
+                <button class="poke-rotate" type="button" name="button"><img class="rotate-image" src="images/rotate.png" alt=""></button>
+                <div class="image-background"></div>
+
+              </div>
+
+              <div class="types-section">
+                  <button class="poke-description-button p-d-b-left"><img class="left-chev chev-button" src="images/left-chev.png" alt=""></button>
+                <div class="types-container">
+                  <span class="poke-type-one"></span>
+                  <span class="poke-type-two"></span>
+                </div>
+                <button class="poke-description-button p-d-b-right"><img class="right-chev chev-button" src="images/right-chev.png" alt=""></button>
+
+              </div>
+
+              <div class="stats-container">
+
+                <label class="stat-label">HP</label>
+                <div class="progress">
+                  <div id="hp-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">25</div>
+                </div>
+
+                <label class="stat-label">Attack</label>
+                <div class="progress">
+                  <div id="attack-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <label class="stat-label">Defense</label>
+                <div class="progress">
+                  <div id="defense-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <label class="stat-label">Sp.Atk</label>
+                <div class="progress">
+                  <div id="spatk-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <label class="stat-label">Sp.Def</label>
+                <div class="progress">
+                  <div id="spdef-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+                <label class="stat-label">Speed</label>
+                <div class="progress">
+                  <div id="speed-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
+
+              </div>
+
+              <div class="description-container hide">
+              <div class="ability-container">
+                <p class="poke-ability-name"></p>
+                <p class="poke-ability-description"></p>
+              </div>
+              <hr class="description-hr">
+                <p class="poke-description"</p>
+              </div>
+
+              <!-- <div class="description-button-container"> -->
+
+
+              <!-- </div> -->
+
+            <div class="prev-next-container">
+
+              <button class="prev-button" type="button" name="button"><img class="left-arrow" src="images/left-arrow.png" alt=""></button>
+              <button class="next-button" type="button" name="button"><img class="right-arrow" src="images/right-arrow.png" alt=""></button>
+
+
+          </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-button-box">
+          <div class="home-button home-button-pulse"></div>
+          <img class="pokeball" src="images/pokeball2.png" alt="">
+        </div>
+
+      </div>
+    </div>
+    <footer>
+
+      <p class="footer-content">&copy; 2020 Danny Stalter</p>
+          <a class="footer-content" href="#">dannystalter.com</a>
+    <a class="footer-content" href="credits.html">Credits</a>
+
+    </footer>
+  </div>
+
+
+  <script src="app.js"></script>
+</body>
+
+</html>
