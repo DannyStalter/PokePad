@@ -1,5 +1,5 @@
 # PokePad
 
-A Pokedex application using only HTML, CSS and JavaScript.
+A Pokedex application! Pulls from PokeAPI and is built from just HTML, CSS and JavaScript.
 
 https://dannystalter.github.io/PokePad/
