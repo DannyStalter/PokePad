@@ -430,8 +430,6 @@ const handleHomeButtonClick = () => {
         pokeWeight.textContent = data['weight'];
         pokeHeight.textContent = data['height'];
 
-
-
         // Clear search bar
         document.getElementById('user-search').value = '';
       })
