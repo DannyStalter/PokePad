@@ -5,6 +5,7 @@ html, body {
   padding: 0;
   margin: 0;
   font-family: 'Press Start 2P', cursive;
+  overflow-x: hidden;
 }
 
 /* ??? */
@@ -558,6 +559,7 @@ video {
 }
 
 .prev-next-container button {
+  background-color: #fbf6f0;
   border: 0.125rem solid black;
   position: relative;
   height: 3.125rem;
