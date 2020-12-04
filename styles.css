@@ -916,7 +916,29 @@ footer {
 
 @media (max-width: 600px) {
   html {
-    font-size: 0.625rem;
+    font-size: 10px;
+  }
+
+  .pokedex-container {
+    width: 42rem;
+    height: 56rem;
+    margin-bottom: 9%;
+  }
+
+  .poke-shiny {
+    font-size: 3.2px;
+  }
+
+  .home-button-box {
+    height: 2.1rem;
+    width: 2.1rem;
+    bottom: .3rem;
+  }
+}
+
+@media (max-width: 440px) {
+  html {
+    font-size: 8px;
   }
 
   .pokedex-container {
@@ -932,7 +954,6 @@ footer {
     width: 2.1rem;
     bottom: .3rem;
   }
-
 }
 
 .hide {
