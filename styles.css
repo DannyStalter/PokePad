@@ -459,8 +459,8 @@ video {
 
 .chev-button {
   background-color: transparent;
-  height: 1.25rem;
-  width: 1.25rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 .chev-button:active {
@@ -954,6 +954,11 @@ footer {
     height: 2.1rem;
     width: 2.1rem;
     bottom: .3rem;
+  }
+
+  .chev-button {
+    height: 1.9rem;
+    width: 1.9rem;
   }
 
   footer {
