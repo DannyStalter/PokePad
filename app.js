@@ -1,8 +1,11 @@
 const powerOnAudio = document.querySelector('#power-on-audio');
 // const searchAudio = document.querySelector('#search-audio');
 const errorAudio = document.querySelector('#error-audio');
+const click1Audio = document.querySelector('#click1-audio');
+const click2Audio = document.querySelector('#click2-audio');
 const backgroundVideo = document.querySelector('#background-video');
 const siteOverlayDark = document.querySelector('.site-overlay-dark');
+const pokepadCover = document.querySelector('.pokepad-cover');
 const mainScreen = document.querySelector('.main-screen');
 const shine = document.querySelector('.shine');
 const shineWelcomeScreen = document.querySelector('.shine-welcome-screen');
@@ -81,6 +84,23 @@ document.getElementById('user-search').value = '';
 const handleHomeButtonClick = () => {
 
   if ($(welcomeScreen).hasClass('hide') && $(screenColor).hasClass('hide') && $(errorScreen).hasClass('hide')) {
+
+    //Reset Cover Screen Animations
+    click1Audio.volume = 0.25;
+    click2Audio.volume = 0.08;
+    click1Audio.play();
+    setTimeout(function() {
+      click2Audio.play();
+    }, 1880);
+    pokepadCover.classList.remove("pokepad-cover-slide-right")
+    pokepadCover.classList.remove("pokepad-cover-slide-left")
+    // Open Pokepad Cover
+    $(pokepadCover).addClass("pokepad-cover-slide-right")
+    .on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {
+     $(this).addClass('pokepad-cover-slide-left');
+     $(this).addClass('pokepad-cover-hide');
+    });
+
     // Brighten website (powering on effect)
     siteOverlayDark.classList.add('hide');
     // Hide Error Screen if Home Button clicked after a search error
@@ -92,11 +112,11 @@ const handleHomeButtonClick = () => {
     wH3.classList.add('w-h3-animation');
     wP.classList.add('w-p-animation');
     shineWelcomeScreen.classList.remove('hide');
-    // Play audio with a delay of .575 seconds
+    // Play audio with a delay of 1.575 seconds
     powerOnAudio.volume = 0.2;
     setTimeout(function() {
       powerOnAudio.play();
-    }, 575); //2200?
+    }, 1575); //2200?
     // Turn on Lights
     blueLight.classList.add('blue-light-on');
     redLight.classList.add('red-light-on');
@@ -110,6 +130,19 @@ const handleHomeButtonClick = () => {
     // Remove Home Button pulse
     homeButton.classList.remove('home-button-pulse');
   } else {
+    //Reset Cover Screen Animations
+    pokepadCover.classList.remove("pokepad-cover-slide-right")
+    pokepadCover.classList.remove("pokepad-cover-slide-left")
+    // Close Pokepad Cover
+    click2Audio.play();
+    setTimeout(function() {
+      click1Audio.play();
+    }, 1880);
+    $(pokepadCover).addClass("pokepad-cover-slide-right")
+    .on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {
+     $(this).addClass('pokepad-cover-slide-left');
+     $(this).removeClass('pokepad-cover-hide');
+    });
     // Darken website (powering off effect) ?
     // siteOverlayDark.classList.remove('hide');
     // Stops powerOnAudio if currently playing
@@ -137,6 +170,7 @@ const handleHomeButtonClick = () => {
     // Add back Home Button pulse
     homeButton.classList.add('home-button-pulse');
   }
+
 
   // Prev and Next Button Functionality
   const handlePrevButtonClick = () => {

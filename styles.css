@@ -39,7 +39,7 @@ video {
   left: 0;
   right: 0;
   background-color: black;
-  z-index: 1;
+  z-index: 2;
   opacity: .5;
 }
 
@@ -54,6 +54,76 @@ video {
   box-shadow: inset 0 0 0.1875rem 0.1875rem rgba(0, 0, 0, .3);
   box-shadow: 0 0.125rem 0.3125rem 0 rgba(0, 0, 0, 0.3), 0 0.1875rem 0.5rem 0 rgba(0, 0, 0, 0.5);
 }
+
+
+.pokepad-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  background: rgb(200,0,0);
+  background: linear-gradient(90deg, rgba(200,0,0,1) 0%, rgba(203,13,13,1) 9%, rgba(255,0,0,1) 100%);
+  height: 49.2rem;
+  z-index: 0;
+  width: 42.2725rem;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  z-index: 1;
+}
+/* .pokepad-cover hr {
+  border-bottom: .1rem solid black;
+  width: 12%; */
+
+.cover-title {
+  color: #6b0202;
+  font-size: 2.2rem;
+  margin: .5rem 1rem .5rem;
+}
+.cover-pokeball {
+  height: 36rem;
+  width: 36rem;
+  position: absolute;
+  opacity: .1;
+}
+
+.pokepad-cover-hide {
+  z-index: 0;
+}
+
+.pokepad-cover-slide-right {
+    animation: coverSlideRight .8s ease-in-out forwards;
+
+}
+
+.pokepad-cover-slide-left {
+  animation: coverSlideLeft 1.2s ease-in-out;
+}
+
+@keyframes coverSlideRight {
+
+0%{
+  transform: translateX(0);
+}
+
+100%{
+  transform: translateX(42.7rem);
+}
+}
+
+@keyframes coverSlideLeft {
+
+0%{
+  transform: translateX(42.7rem);
+}
+
+100%{
+  transform: translateX(0);
+}
+}
+
+
+
 
 /* Upper Pokedex */
 .upper-container {
@@ -157,7 +227,13 @@ video {
   width: 1.3125rem;
 }
 
+
+
+
 /* Lower Pokedex Section */
+
+
+
 .pokedex-screen-container {
   background-color: red;
   display: flex;
@@ -165,7 +241,9 @@ video {
   align-items: center;
   height: 51.9rem;
   width: auto;
+  position: relative;
   box-shadow: inset 0 0.0625rem 0 0.0625rem rgba(0, 0, 0, .3);
+
 }
 
 .white-screen-border {
@@ -207,7 +285,7 @@ video {
 }
 
 .shine-welcome-screen:before {
-  animation-delay: 2s;
+  animation-delay: 3s;
 }
 
 /* Main Screen Content */
@@ -598,7 +676,7 @@ video {
   position: absolute;
   height: 2.7rem;
   width: 2.7rem;
-  bottom: .5rem;
+  bottom: -.5rem;
 }
 
 .home-button {
@@ -626,24 +704,24 @@ video {
 
 /* Welcome Screen Animations */
 .w-screen-fade-in {
-  animation: fadein 1s;
+  animation: fadein 2.2s;
 }
 
 .w-h1-animation {
   animation: fadein .5s, moveup-pause 1.4s;
-  animation-delay: .5s;
+  animation-delay: 1.5s;
   animation-fill-mode: forwards;
 }
 
 .w-h3-animation {
   animation: fadein .5s, moveup .5s;
-  animation-delay: 1.7s;
+  animation-delay: 2.7s;
   animation-fill-mode: forwards;
 }
 
 .w-p-animation {
   animation: fadein .5s, moveup .5s;
-  animation-delay: 1.9s;
+  animation-delay: 2.9s;
   animation-fill-mode: forwards;
 }
 
@@ -902,6 +980,10 @@ footer {
     width: 42rem;
     height: 56rem;
     margin-bottom: 9%;
+  }
+
+  .pokepad-cover {
+  width: 41.3rem;
   }
 
   .poke-shiny {
