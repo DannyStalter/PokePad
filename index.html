@@ -37,11 +37,7 @@
   <audio id='click1-audio' src="sounds/click1.mp3"></audio>
   <audio id='click2-audio' src="sounds/click2.mp3"></audio>
 
-  <!-- ??? -->
-  <!-- <video autoplay muted loop id="background-video">
-  <source src="" type="video/mp4">
-</video> -->
-
+  <!-- darkened overlay upon inital site load..functionality temporarily disabled via commenting out z-index -->
   <div class="site-overlay-dark"></div>
   <div class="page-container">
 
@@ -59,7 +55,6 @@
         <div class="search-container">
           <input id="user-search" type="text" class="search-bar" autocomplete="off" name="search">
           <button id="search-button" type="submit"><img class="pokeball-search" src="images/pokeball.png" alt=""></button>
-          <!-- <i class="fa fa-search"></i> -->
         </div>
       </div>
 
@@ -200,8 +195,10 @@
 
     <footer>
 
-      <p class="footer-content">&copy; <script>document.write(new Date().getFullYear())</script>
- Danny Stalter</p>
+      <p class="footer-content">&copy; <script>
+          document.write(new Date().getFullYear())
+        </script>
+        Danny Stalter</p>
       <a class="footer-content" href="#">dannystalter.com</a>
       <a class="footer-content" href="credits.html">Credits</a>
 
