@@ -177,7 +177,7 @@ const handleHomeButtonClick = () => {
     var searchId;
     searchId = $(pokeId).text();
 
-    if (searchId == 001) return;
+    if (searchId == 0o1) return;
     else {
       searchId--;
       document.getElementById('user-search').value = searchId;
